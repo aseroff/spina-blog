@@ -10,6 +10,8 @@ Spina::Engine.routes.draw do
     get 'posts/', to: redirect('/blog'), as: :old_index
     get 'posts/:id', to: redirect('/blog/%{id}'), as: :old_post
 
+    resources :comments, only: [:create, :update, :destroy]
+
     get 'feed.atom', to: 'posts#index', as: :rss_feed, defaults: { format: :atom }
     get 'categories/:id', to: 'categories#show', as: :category
     get 'archive/:year(/:month)', to: 'posts#archive', as: :archive_posts
@@ -25,7 +27,6 @@ Spina::Engine.routes.draw do
           get :future
         end
       end
-      resources :comments, only: [:create, :update, :destroy]
     end
   end
 end
