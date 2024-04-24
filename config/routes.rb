@@ -25,6 +25,7 @@ Spina::Engine.routes.draw do
           get :future
         end
       end
+      resources :comments, only: [:create, :update, :destroy]
     end
   end
 end

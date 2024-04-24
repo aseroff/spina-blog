@@ -5,3 +5,8 @@
 <% end %>
 
 <%= @post.content&.html_safe %>
+
+Comments:
+<%= render @comments %>
+
+<%= render partial: 'spina/blog/comments/form', comment: Spina::Blog::Comment.new(spina_blog_post_id: @post.id) %>
