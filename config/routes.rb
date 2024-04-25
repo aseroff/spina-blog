@@ -5,12 +5,11 @@ Spina::Engine.routes.draw do
     root to: 'posts#index'
 
     get ':id', to: 'posts#show', as: :post
+    post 'posts/:post_id/comments', to: 'comments#create', as: :comment
 
     # Redirects for old sites that used the old blog path
     get 'posts/', to: redirect('/blog'), as: :old_index
     get 'posts/:id', to: redirect('/blog/%{id}'), as: :old_post
-
-    resources :comments, only: [:create, :update, :destroy]
 
     get 'feed.atom', to: 'posts#index', as: :rss_feed, defaults: { format: :atom }
     get 'categories/:id', to: 'categories#show', as: :category

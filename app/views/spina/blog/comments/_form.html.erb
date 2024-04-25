@@ -1,5 +1,5 @@
-<%= form_with model: comment do |form| %>
-  <%= form.hidden_field :user_id, value: current_user.id %>
+<%= form_with url: "/blog/posts/#{comment.post_id}/comments", model: comment do |form| %>
+  <%= form.hidden_field :user_id, value: current_user&.id %>
   <%= form.text_field :content %>
   <%= form.submit %>
 <% end %>

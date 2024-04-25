@@ -7,6 +7,8 @@
 <%= @post.content&.html_safe %>
 
 Comments:
-<%= render @post.comments %>
+<% @post.comments.each do |comment| %>
+  <%= render 'spina/blog/comments/comment', comment: comment.decorate %>
+<% end %>
 
-<%= render 'spina/blog/comments/form', comment: Spina::Blog::Comment.new(spina_blog_post_id: @post.id) %>
+<%= render('spina/blog/comments/form', comment: Spina::Blog::Comment.new(post_id: @post.id)) if current_user %>
