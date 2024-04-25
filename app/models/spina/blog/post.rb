@@ -12,6 +12,7 @@ module Spina
 
       belongs_to :user
       belongs_to :category, inverse_of: :posts
+      has_many :comments
 
       validates :title, :content, presence: true
 

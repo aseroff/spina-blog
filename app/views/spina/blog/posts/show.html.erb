@@ -5,3 +5,10 @@
 <% end %>
 
 <%= @post.content&.html_safe %>
+
+Comments:
+<% @post.comments.each do |comment| %>
+  <%= render 'spina/blog/comments/comment', comment: comment.decorate %>
+<% end %>
+
+<%= render('spina/blog/comments/form', comment: Spina::Blog::Comment.new(post_id: @post.id)) if current_user %>
