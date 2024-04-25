@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-# Addition of SEO fields
+# Addition of comments to posts
 class AddComments < ActiveRecord::Migration[5.2]
   def change
     create_table :spina_blog_comments do |t|
